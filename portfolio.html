@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arjun Kanani </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #141419;
+            color: #00FF00;
+        }
+
+        .navbar {
+            background-color: #1c1f2b;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #07f3e5 !important;
+            font-weight: 500;
+        }
+
+        .navbar-brand,
+        .nav-link:hover {
+            color: #00ff00;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00ff00 !important;
+        }
+
+
+
+        header {
+            background: url('header-bg.jpg') center/cover no-repeat;
+            padding: 120px 20px;
+            text-align: center;
+            color: #07f3e5;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+        }
+
+        .resume-btn {
+            background-color: #0da298;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.7s;
+        }
+
+        .resume-btn:hover {
+            background-color: #e85b50;
+        }
+
+        .section-title {
+            margin: 60px 0 30px;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #07f3e5;
+        }
+
+
+
+        .card {
+            background-color: #23263a;
+            border: none;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img,
+        .certificate-img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .skills-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .skills-icons span {
+            background: #1f2235;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: #0d0d11;
+            padding: 20px;
+            color: #bbb;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .social-icons a {
+            color: #bbb;
+            margin: 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .social-icons a:hover {
+            color: #07f3e5;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Arjun Kanani</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                style="background-color: #07f3e5;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="display-4" style="font-size: 60px; font-weight: bolder;">Hi, I'm Arjun Kanani</h1>
+        <p class="lead">Full Stack Developer | MERN Stack | Passionate Problem Solver</p>
+    </header>
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <a href="/Porfolio/Arjun_Resume.pdf" id="downloadResume" class="resume-btn">
+                📄 Download My Resume
+            </a>
+        </div>
+    </div>
+
+    <!-- Include your script file at the end of body -->
+    <script src="resume-download.js"></script>
+
+
+    <h2 class="section-title">About Me</h2>
+    <div class="card mb-5" style="color: white; font-family: 'Times New Roman', Times, serif;">
+        <p>
+            Hello! I'm a passionate and detail-oriented software developer with a strong foundation in the MERN
+            stack (MongoDB, Express.js, React, Node.js).
+            I love building intuitive and responsive web applications that solve real-world problems. With a strong
+            commitment to clean code, continuous learning,
+            and creative problem-solving, I aim to deliver impactful digital experiences. Whether working solo or in
+            a team, I bring energy, curiosity, and collaboration
+            to every project.
+        </p>
+        <p>
+            I'm especially interested in full-stack development, modern UI/UX design, and optimizing performance for
+            web apps. I’ve also completed several certifications
+            to stay current with industry standards and best practices.
+        </p>olving to every project I take on.</p>
+    </div>
+
+    <h2 class="section-title" id="skills">Skills</h2>
+    <div class="card mb-5" style="color: #ffff;">
+        <div class="row text-center">
+            <div class="col-md-3 mb-3">
+                <div class="p-3 bg-dark rounded shadow">
+                    <h5>Frontend</h5>
+                    <p>HTML, CSS, JavaScript, React, Bootstrap, Tailwind</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 bg-dark rounded shadow">
+                    <h5>Backend</h5>
+                    <p>Node.js, Express.js</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 bg-dark rounded shadow">
+                    <h5>Database</h5>
+                    <p>MongoDB</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 bg-dark rounded shadow">
+                    <h5>Tools</h5>
+                    <p>Git, GitHub, VS Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h2 class="section-title" id="projects">Projects</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="/Porfolio/Project-1.png" alt="Project 1" class="project-img">
+                <h5 style="color: white;">Task Tracker App</h5>
+                <p style="color: white;">A full-featured task management application designed to help
+                    users organize, track, and complete their daily tasks efficiently. Built using the
+                    MERN stack, the app allows users to add tasks with descriptions and due dates, mark
+                    tasks as completed, view detailed task information, and delete tasks—all in real-time.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <img src="/Porfolio/Project-2.png" alt="Project 2" class="project-img">
+                <h5 style="color: white;">Portfolio Website</h5>
+                <p style="color: white;">A responsive and visually appealing personal portfolio website
+                    designed to showcase my skills, projects, resume, and certifications. Built using
+                    HTML, CSS, and Bootstrap, the site features a modern UI with animated sections,
+                    cards, and downloadable content. It is fully optimized for both desktop and mobile
+                    devices, providing a smooth and interactive user experience.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="certificates">Certificates</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <img src="/Porfolio/Certificate-1.png" alt="Certificate 1" class="certificate-img">
+                <p style="color: white;">Machine Learning Foundation Course - AWS</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <img src="/Porfolio/Certificate-2.png" alt="Certificate 2" class="certificate-img">
+                <p style="color: white;">Arduinothone - Atmiya Uinversity</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <img src="/Porfolio/Certificate-3.png" alt="Certificate 3" class="certificate-img">
+                <p style="color: white;">Introduction To Python - Sololearn</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="contact">Contact</h2>
+    <div class="card text-center">
+        <p style="color: #07f3e5;">Email: <a href="mailto:arjunkanani2@gmail.com"
+                style="color: wheat;">arjunkanani2@gmail.com</a></p>
+        <p>Phone: 87330 57636</p>
+        <div class="social-icons">
+            <a href="https://github.com/kananiarjun" target="_blank"><i class="bi bi-github"></i></a>
+            <a href="https://in.linkedin.com/in/arjun-kanani-190778262" target="_blank"><i
+                    class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Arjun Kanani. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const downloadBtn = document.getElementById("downloadResume");
+
+        if (downloadBtn) {
+            downloadBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const link = document.createElement("a");
+                link.href = "/Porfolio/Arjun_Resume.pdf";
+                link.download = "Arjun_Resume.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+    });
+</script>
+
+
+</html>
