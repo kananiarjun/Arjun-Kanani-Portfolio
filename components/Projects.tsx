@@ -52,7 +52,7 @@ const projects = [
     fallbackImage: '/projects/aichat.jpg',
     tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'MongoDB'],
     github: 'https://github.com/testcode-js/todo-list',
-    live: 'https://example.com',
+    live: 'https://todo-list-lilac-ten-45.vercel.app/',
     featured: false,
   },
   {
@@ -61,8 +61,8 @@ const projects = [
     image: getDropboxDirectUrl(process.env.NEXT_PUBLIC_DROPBOX_PORTFOLIO || ''),
     fallbackImage: '/projects/portfolio.jpg',
     tags: ['Next.js', 'TailwindCSS', 'Dropbox', 'Framer-motion'],
-    github: 'https://github.com',
-    live: 'https://example.com',
+    github: 'https://github.com/testcode-js/portfolio',
+    live: 'https://portfolio-ruby-psi-frxabg1snv.vercel.app/',
     featured: false,
   },
 ];
