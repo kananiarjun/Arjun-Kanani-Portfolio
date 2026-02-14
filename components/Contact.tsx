@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { HiMail, HiPhone, HiLocationMarker, HiPaperAirplane } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker, HiPaperAirplane, HiCloudUpload, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerItem, scaleIn } from './Helper/animations';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerItem, scaleIn } from './helper/animations';
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 25MB in bytes
 
 const contactInfo = [
   {
@@ -29,7 +31,7 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: FaGithub, href: 'https://github.com/kananiarjun', label: 'GitHub' },
-  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/arjun-kanani-190778262/', label: 'LinkedIn' },
+  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/arjun--kanani/', label: 'LinkedIn' },
   
 ];
 
@@ -40,8 +42,11 @@ const Contact = () => {
     subject: '',
     message: '',
   });
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [fileError, setFileError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,17 +54,26 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('subject', formData.subject);
+      data.append('message', formData.message);
+
+      // Append files
+      selectedFiles.forEach((file) => {
+        data.append('files', file);
+      });
+
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: data,
       });
 
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setSelectedFiles([]);
       } else {
         setSubmitStatus('error');
       }
@@ -77,6 +91,61 @@ const Contact = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files);
+      const validFiles: File[] = [];
+      const oversizedFiles: string[] = [];
+
+      filesArray.forEach((file) => {
+        if (file.size > MAX_FILE_SIZE) {
+          oversizedFiles.push(file.name);
+        } else {
+          validFiles.push(file);
+        }
+      });
+
+      if (oversizedFiles.length > 0) {
+        setFileError(`File(s) exceed 25MB limit: ${oversizedFiles.join(', ')}`);
+        setTimeout(() => setFileError(null), 5000);
+      }
+
+      if (validFiles.length > 0) {
+        setSelectedFiles((prev) => [...prev, ...validFiles]);
+      }
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (e.dataTransfer.files) {
+      const filesArray = Array.from(e.dataTransfer.files);
+      const validFiles: File[] = [];
+      const oversizedFiles: string[] = [];
+
+      filesArray.forEach((file) => {
+        if (file.size > MAX_FILE_SIZE) {
+          oversizedFiles.push(file.name);
+        } else {
+          validFiles.push(file);
+        }
+      });
+
+      if (oversizedFiles.length > 0) {
+        setFileError(`File(s) exceed 25MB limit: ${oversizedFiles.join(', ')}`);
+        setTimeout(() => setFileError(null), 5000);
+      }
+
+      if (validFiles.length > 0) {
+        setSelectedFiles((prev) => [...prev, ...validFiles]);
+      }
+    }
   };
 
   return (
@@ -266,6 +335,64 @@ const Contact = () => {
                   className="w-full px-4 py-3 rounded-xl bg-[var(--darker)] border border-[var(--card)] focus:border-[var(--primary)] focus:outline-none transition-colors text-[var(--text)] resize-none"
                   placeholder="Tell me about your project..."
                 />
+              </div>
+
+              <div className="mb-6">
+                <label className="block text-sm font-medium mb-2">Attach Files (Optional)</label>
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  onDrop={handleFileDrop}
+                  onDragOver={(e) => e.preventDefault()}
+                  className="w-full p-6 rounded-xl bg-[var(--darker)] border border-dashed border-[var(--card)] hover:border-[var(--primary)] transition-colors cursor-pointer text-center"
+                >
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    multiple
+                    accept="image/*,.pdf,.doc,.docx,.txt"
+                    className="hidden"
+                  />
+                  <HiCloudUpload className="text-3xl text-[var(--text-muted)] mx-auto mb-2" />
+                  <p className="text-sm text-[var(--text-muted)]">
+                    Click to upload or drag & drop files here
+                  </p>
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
+                    Images, PDFs, Documents (Max 25MB each)
+                  </p>
+                </div>
+
+                {/* Selected Files */}
+                {fileError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-400"
+                  >
+                    {fileError}
+                  </motion.p>
+                )}
+                {selectedFiles.length > 0 && (
+                  <div className="mt-3 space-y-2">
+                    {selectedFiles.map((file, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-2 rounded-lg bg-[var(--darker)] border border-[var(--card)]"
+                      >
+                        <span className="text-sm text-[var(--text)] truncate flex-1">
+                          {file.name} ({(file.size / 1024).toFixed(1)} KB)
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="p-1 hover:bg-red-500/20 rounded transition-colors ml-2"
+                        >
+                          <HiX className="text-red-400" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <motion.button

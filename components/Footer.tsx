@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FaHeart } from 'react-icons/fa';
 import { HiArrowUp } from 'react-icons/hi';
-import { fadeInUp, staggerContainer, staggerItem } from './Helper/animations';
+import { fadeInUp, staggerContainer, staggerItem } from './helper/animations';
 
 const Footer = () => {
   const scrollToTop = () => {

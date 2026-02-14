@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDocker, FaAws, FaFigma, FaLinux, FaGithub } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiCanva, SiTailwindcss, SiMysql, SiPostgresql, SiMongodb, SiRedis, SiGraphql, SiJest, SiVscodium } from 'react-icons/si';
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerItem } from './Helper/animations';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerItem } from './helper/animations';
 import { VscVscode } from 'react-icons/vsc';
 
 const skillCategories = [

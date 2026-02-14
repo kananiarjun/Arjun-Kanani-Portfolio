@@ -9,7 +9,7 @@ import {
   staggerContainer,
   staggerItem,
   scaleIn
-} from './Helper/animations';
+} from './helper/animations';
 
 const services = [
   {

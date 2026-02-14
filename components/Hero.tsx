@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiDownload, HiArrowRight } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { fadeInUp, fadeInDown, staggerContainer, staggerItem, scaleIn } from './Helper/animations';
+import { fadeInUp, fadeInDown, staggerContainer, staggerItem, scaleIn } from './helper/animations';
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
@@ -136,7 +136,7 @@ const Hero = () => {
             {[FaGithub, FaLinkedin].map((Icon, index) => (
               <motion.a
                 key={index}
-                href={['https://github.com/kananiarjun', 'https://www.linkedin.com/in/arjun-kanani-190778262'][index]}
+                href={['https://github.com/kananiarjun', 'https://www.linkedin.com/in/arjun--kanani/'][index]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-xl glass flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--primary)] transition-all duration-300"
@@ -155,10 +155,10 @@ const Hero = () => {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
           >
             {[
-              { value: '3+', label: 'Months Experience' },
-              { value: '5+', label: 'Projects Completed' },
-              { value: '3+', label: 'Happy Clients' },
-              { value: '100%', label: 'Satisfaction' },
+              { value: '10+', label: 'Technologies Learned' },
+              { value: '8+', label: 'Projects Built' },
+              { value: '300+', label: 'Hours of Coding' },
+              { value: '100%', label: 'Dedication' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
